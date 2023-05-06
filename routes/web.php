@@ -20,4 +20,8 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::post('/register/post', [HomeController::class, 'register'])->name('register');
+
+Route::get('confirm/{name}/phone_number', [HomeController::class, 'confirmPhone'])->name('confirmPhone');
+
 
