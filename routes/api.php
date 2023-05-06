@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('store/confirm/phone', [Homecontroller::class, 'storeConfirmedPhone'])->name('storeConfirmedPhone');
 
 
+Route::post('store/expire/phone', [Homecontroller::class, 'expireConfirmedPhone'])->name('expire.Confirmed.Phone');

@@ -44,12 +44,20 @@ class HomeController extends Controller
         
         $otp->created_at = Carbon::now();
         
-
         if($otp->save()){
             $added_time = Carbon::now()->addMinute();
             $time = Carbon::parse($added_time)->isoFormat('MMM D, Y H:m:s');
             
-            return response()->json(['time'=> $time]);
+            return response()->json(['time'=> $time, 'id'=>$otp->id]);
+        }
+    }
+
+    public function expireConfirmedPhone(Request $request){
+        $otp = Otpverify::find($request->id);
+
+        $otp->otp_expired = 9;
+        if($otp->update()){
+            return response()->json(['message' => 'OTP Data Is Expired']);
         }
     }
 }
